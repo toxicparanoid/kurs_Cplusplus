@@ -1,10 +1,30 @@
 #include <iostream>
 
 int main() {
+    setlocale(LC_ALL, "RUS");
+
+//----------------------------------------------------------
+    std::cout << "1 Задание: " << std::endl;
+
+    int val, summ = 0;
+
+    do
+    {
+        std::cout << "Введите целое число или число '0', чтобы закончить: ";
+        std::cin >> val;
+        summ += val;
+
+    } while (val != 0);
+    std::cout << "Сумма: " << summ << std::endl << std::endl;
+    
+    
+
+
+
+
 //----------------------------------------------------------
     std::cout << "2 Задание: " << std::endl;
     
-    setlocale(LC_ALL, "RUS");
     int number;
     int sum = 0;
 
@@ -30,10 +50,6 @@ int main() {
         ans = value * i;
         std::cout << value << " x " << i << " = " << ans << std::endl;
     }
-
-
-
-
 
     return 0;
 }
