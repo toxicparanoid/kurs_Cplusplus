@@ -24,14 +24,21 @@ double division(double a, double b)
     return l;
 }
 
-int qu(int x, int y) {
-	int result = 1;
-	for (int i = 0; i < y; i++)
-	{
-		result *= y;
+int qu(int x, int y){
+	int res = 1;
+	for (int i = 0; i < y; i++){
+		res *= x;
 	}
-	return result;
-	}
+	return res;
+
+}
+
+int fibonacci(int n) {
+    if (n <= 0) return 0;
+    if (n == 1) return 1;
+    return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
 
 
 int main(int argc, char** argv)
@@ -56,7 +63,38 @@ int main(int argc, char** argv)
 //--------------------------------------------------------------
 	std::cout << "2 Задание: " << std::endl;
 
-	std::cout << 5 << "в степени " << 2 << " = " << qu(5, 2) << std::endl;
+	int fis = 5, sec = 2;
+
+	std::cout << fis << " в степени " << sec << " = " << qu(fis, sec) << std::endl;
+
+	fis = 3, sec = 3;
+
+	std::cout << fis << " в степени " << sec << " = " << qu(fis, sec) << std::endl;
+
+	fis = 4, sec = 4;
+
+	std::cout << fis << " в степени " << sec << " = " << qu(fis, sec) << std::endl;
+
+	fis = 2, sec = 3;
+
+	std::cout << "Доп. вариант: \n" << fis << " в степени " << sec << " = " << qu(fis, sec) << std::endl;
+	std::cout << std::endl;
+
+//--------------------------------------------------------------
+	std::cout << "3 Задание: " << std::endl;
+
+	int chisfib;
+
+	std::cout << "Введите число: ";
+	std::cin >> chisfib;
+
+	std::cout << "Числа Фибоначчи: ";
+
+	for (int i = 0; i < chisfib; i++) {
+        std::cout << fibonacci(i) << " ";
+    }
+    std::cout << std::endl;
+	
 
 
 	return 0;
