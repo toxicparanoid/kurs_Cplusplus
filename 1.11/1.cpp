@@ -11,7 +11,7 @@ int main() {
     cin >> name;
     cout << "Введите фамилию: ";
     cin >> surname;
-    cout << "Здарова, " << name  << " " << surname  << "!\n";
+    cout << "Здарова, " << name + " " + surname  << "!\n";
 
     return 0;
 }
