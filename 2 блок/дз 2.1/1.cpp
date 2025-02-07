@@ -3,7 +3,6 @@
 
 using namespace std;
 
-// Определяем перечисление для месяцев
 enum Month {
     JANUARY = 1,
     FEBRUARY,
