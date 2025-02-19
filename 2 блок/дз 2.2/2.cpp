@@ -41,7 +41,6 @@ int main() {
     if (choice == 'y' || choice == 'Y') {
         cout << "Введите начальное значение счётчика: ";
         cin >> initialValue;
-        Counter counter(initialValue);
     }
     
     Counter counter(initialValue);
