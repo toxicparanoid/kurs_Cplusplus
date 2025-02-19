@@ -31,7 +31,7 @@ class Counter {
 
 int main() {
 
-    int initialValue;
+    int initialValue = 1;
     char choice;
     char command;
 
@@ -41,9 +41,11 @@ int main() {
     if (choice == 'y' || choice == 'Y') {
         cout << "Введите начальное значение счётчика: ";
         cin >> initialValue;
+        Counter counter(initialValue);
     }
-
+    
     Counter counter(initialValue);
+
 
     while (true) {
 
@@ -56,7 +58,6 @@ int main() {
                 counter.plus();
                 break;
 
-            
             case '-':
                 counter.minus();
                 break;
