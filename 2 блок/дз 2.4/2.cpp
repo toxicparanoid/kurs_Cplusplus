@@ -2,6 +2,8 @@
 #include <fstream>
 #include <string>
 #include <algorithm>
+#include <windows.h>
+using namespace std;
 
 class Address {
 private:
@@ -34,6 +36,8 @@ void sort(Address** addresses, int size) {
 }
 
 int main() {
+    SetConsoleCP(CP_UTF8);
+    SetConsoleOutputCP(CP_UTF8);
     std::ifstream inFile("in2.txt");
     std::ofstream outFile("out2.txt");
 

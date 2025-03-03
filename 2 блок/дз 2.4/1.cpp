@@ -25,7 +25,7 @@ int main() {
     SetConsoleCP(CP_UTF8);
     SetConsoleOutputCP(CP_UTF8);
     ifstream inFile("in1.txt");
-    ofstream outFile("task1.txt");
+    ofstream outFile("out1.txt");
 
     if (!inFile.is_open() || !outFile.is_open()) {
         cerr << "Ошибка открытия файла!" << endl;
