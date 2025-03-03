@@ -2,6 +2,7 @@
 #include <fstream>
 #include <vector>
 #include <string>
+#include <windows.h>
 using namespace std;
 
 class Address {
@@ -21,6 +22,8 @@ public:
 };
 
 int main() {
+    SetConsoleCP(CP_UTF8);
+    SetConsoleOutputCP(CP_UTF8);
     ifstream inFile("in1.txt");
     ofstream outFile("task1.txt");
 
