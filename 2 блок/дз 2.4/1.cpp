@@ -2,29 +2,30 @@
 #include <fstream>
 #include <vector>
 #include <string>
+using namespace std;
 
 class Address {
 private:
-    std::string city;
-    std::string street;
+    string city;
+    string street;
     int houseNumber;
     int apartmentNumber;
 
 public:
-    Address(const std::string& city, const std::string& street, int houseNumber, int apartmentNumber)
+    Address(const string& city, const string& street, int houseNumber, int apartmentNumber)
         : city(city), street(street), houseNumber(houseNumber), apartmentNumber(apartmentNumber) {}
 
-    std::string get_output_address() const {
-        return city + ", " + street + ", " + std::to_string(houseNumber) + ", " + std::to_string(apartmentNumber);
+    string get_output_address() const {
+        return city + ", " + street + ", " + to_string(houseNumber) + ", " + to_string(apartmentNumber);
     }
 };
 
 int main() {
-    std::ifstream inFile("in1.txt");
-    std::ofstream outFile("task1.txt");
+    ifstream inFile("in1.txt");
+    ofstream outFile("task1.txt");
 
     if (!inFile.is_open() || !outFile.is_open()) {
-        std::cerr << "Ошибка открытия файла!" << std::endl;
+        cerr << "Ошибка открытия файла!" << endl;
         return 1;
     }
 
@@ -34,22 +35,22 @@ int main() {
     Address** addresses = new Address*[N];
 
     for (int i = 0; i < N; ++i) {
-        std::string city, street;
+        string city, street;
         int houseNumber, apartmentNumber;
 
         inFile.ignore();
-        std::getline(inFile, city);
-        std::getline(inFile, street);
+        getline(inFile, city);
+        getline(inFile, street);
         inFile >> houseNumber;
         inFile >> apartmentNumber;
 
         addresses[i] = new Address(city, street, houseNumber, apartmentNumber);
     }
 
-    outFile << N << std::endl;
+    outFile << N << endl;
 
     for (int i = N - 1; i >= 0; --i) {
-        outFile << addresses[i]->get_output_address() << std::endl;
+        outFile << addresses[i]->get_output_address() << endl;
     }
 
     for (int i = 0; i < N; ++i) {
