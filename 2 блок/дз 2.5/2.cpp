@@ -11,8 +11,8 @@ protected:
     vector<int> angles;
 
 public:
-    Figure(int sides, const string& name, const vector<int>& side_lengths, const vector<int>& angles)
-        : sides(sides), name(name), side_lengths(side_lengths), angles(angles) {}
+    Figure(int sides, const string& name, const vector<int>& side_lengths, const vector<int>& angles) 
+    : sides(sides), name(name), side_lengths(side_lengths), angles(angles) {}
 
     void print_info() const {
         cout << name << ":" << endl;
@@ -32,7 +32,8 @@ public:
 
 class Triangle : public Figure {
 public:
-    Triangle(int a, int b, int c, int A, int B, int C) : Figure(3, "Треугольник", {a, b, c}, {A, B, C}) {}
+    Triangle(int a, int b, int c, int A, int B, int C) 
+    : Figure(3, "Треугольник", {a, b, c}, {A, B, C}) {}
 };
 
 class RightTriangle : public Triangle {
