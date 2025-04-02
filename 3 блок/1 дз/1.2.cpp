@@ -1,3 +1,4 @@
+//сложность алгоритма O(logn), так как здесь реализован бинарный поиск
 #include <iostream>
 using namespace std;
 
