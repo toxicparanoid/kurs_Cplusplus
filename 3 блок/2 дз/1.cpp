@@ -1,21 +1,11 @@
 #include <iostream>
-#include <vector>
 using namespace std;
 
 
 int fibonacci(int n) {
     if (n <= 0) return 0;
     if (n == 1) return 1;
-
-    vector<int> dp(n + 1);
-    dp[0] = 0;
-    dp[1] = 1;
-
-    for (int i = 2; i <= n; i++) {
-        dp[i] = dp[i - 1] + dp[i - 2];
-    }
-
-    return dp[n];
+    return fibonacci(n - 1) + fibonacci(n - 2);
 }
 
 int main() {
@@ -34,3 +24,6 @@ int main() {
 
     return 0;
 }
+
+//слжность алгоритма - O(2^n), потому что внутри можно сказать реализовано дерево рекурсии, так как при каждом вызове fibonacci
+//вызываются еще две рекурсии. Сложность по памяти - O(n).
