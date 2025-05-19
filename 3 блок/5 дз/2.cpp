@@ -96,7 +96,7 @@ int main() {
     }
 
     cout << endl;
-    
+    cout << "Пирамида: " << endl;
     print_pyramid(arr, size);
     pyramid_navigation(arr, size);
 
