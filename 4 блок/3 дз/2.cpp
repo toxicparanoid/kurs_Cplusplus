@@ -139,8 +139,8 @@ TEST_CASE( "List Testing") {
         a.PopFront();
         a.PopBack();
         CHECK(a.Size() == 0);
-        /*a.PopBack();
-        CHECK(a.Size() == 0);*/   //тест не пройдет проверку и будет выведено list is empty
+        a.PopBack();
+        REQUIRE_THROWS(a.Size() == 0);   //тест не пройдет проверку и будет выведено list is empty
     }
     
     SECTION("Function PopFront") {
@@ -151,7 +151,7 @@ TEST_CASE( "List Testing") {
         a.PopBack();
         a.PopFront();
         CHECK(a.Size() == 0);
-        /*a.PopFront();
-        CHECK(a.Size() == 0);*/   //тест не пройдет проверку и будет выведено list is empty
+        a.PopFront();
+        REQUIRE_THROWS(a.Size() == 0);   //тест не пройдет проверку и будет выведено list is empty
     }
 }
