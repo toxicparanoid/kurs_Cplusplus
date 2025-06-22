@@ -6,18 +6,18 @@
 using namespace std;
 
 template<typename T>
-T quadr(T a) {
-    return a * a;
+T quadr(T num) {
+    return num * num;
 }
 
 template<typename T>
-vector<T> quadr(vector<T> a) {
-    vector<T> b;
-    for (auto i : a) {
-        i = i * i;
-        b.push_back(i);
+vector<T> quadr(vector<T> vec) {
+    vector<T> vecNew;
+    for (auto step : vec) {
+        step = step * step;
+        vecNew.push_back(step);
     }
-    return b;
+    return vecNew;
 }
 
 int main() {
@@ -27,16 +27,16 @@ int main() {
     cin >> a;
     cout << "[OUT]: " << quadr(a) << endl;
 
-    vector<int> b = {-1, 4, 5};
+    vector<int> vec = {-1, 4, 5};
 
     cout << "[IN]: ";
-    for (int i : b) {
-        cout << i << " ";
+    for (int step : vec) {
+        cout << step << " ";
     }
-    auto c = quadr(b);
+    auto vecQuadr = quadr(vec);
     cout << "\n[OUT]: ";
-    for (auto i : c) {
-        cout << i << " ";
+    for (auto step : vecQuadr) {
+        cout << step << " ";
     }
 
     return 0;

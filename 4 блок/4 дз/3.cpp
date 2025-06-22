@@ -18,8 +18,6 @@ public:
                 sum += i;
             }
         }
-        cout << "[OUT]: get_sum() = " << sum << endl;
-        cout << "[OUT]: get_count() = " << cnt << endl;
     }
 
     void get_vec(vector<int> a) {
@@ -28,6 +26,14 @@ public:
             cout << i << " ";
         }
         cout << endl;
+    }
+
+    void get_sum() {
+        cout << "[OUT]: get_sum() = " << sum << endl;
+    }
+
+    void get_count() {
+        cout << "[OUT]: get_count() = " << cnt << endl;
     }
 };
 
@@ -39,6 +45,8 @@ int main() {
     functor fun;
     fun.get_vec(vec);
     fun(vec);
+    fun.get_sum();
+    fun.get_count();
 
     return 0;
 }
