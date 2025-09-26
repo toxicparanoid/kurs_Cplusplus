@@ -1,0 +1,13 @@
+FROM ubuntu:16.04
+
+RUN apt-get update && apt-get install -y \
+    gcc \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY hello.c /app/hello.c
+
+WORKDIR /app
+
+RUN gcc hello.c -o hello_gcc
+
+CMD ["./hello_gcc"]
