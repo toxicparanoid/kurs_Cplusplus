@@ -1,0 +1,12 @@
+{
+  "name": "mini-search-engine",
+  "version-string": "0.1",
+  "dependencies": [
+    "boost-beast",
+    "boost-asio",
+    "boost-property-tree",
+    "boost-locale",
+    "libpqxx",
+    "pugixml"
+  ]
+}
