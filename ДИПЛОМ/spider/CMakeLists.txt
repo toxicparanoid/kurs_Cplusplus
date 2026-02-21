@@ -18,6 +18,7 @@ find_package(boost_locale CONFIG REQUIRED)
 
 find_package(libpqxx CONFIG REQUIRED)
 find_package(pugixml CONFIG REQUIRED)
+find_package(OpenSSL REQUIRED)
 
 find_path(GUMBO_INCLUDE_DIR gumbo.h)
 find_library(GUMBO_LIBRARY gumbo)
@@ -45,4 +46,6 @@ target_link_libraries(spider PRIVATE
     Boost::locale
     libpqxx::pqxx
     pugixml
+    OpenSSL::SSL
+    OpenSSL::Crypto
 )
