@@ -14,7 +14,7 @@ public:
               const std::string& password);
 
     bool initialize();                // создаёт таблицы, если их ещё нет
-    bool clear_tables();              // полностью очищает таблицы (для переиндексации)
+    bool clear_tables();              // полностью очищает таблицы для переиндексации
     int  insert_document(const std::string& filename); // возвращает id документа
     int  insert_word(const std::string& word);         // возвращает id слова
     void insert_word_frequency(int document_id, int word_id, int freq);

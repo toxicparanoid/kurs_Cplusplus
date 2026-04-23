@@ -70,7 +70,6 @@ bool DBManager::clear_tables() {
     try {
         pqxx::connection c(conn_string);
         pqxx::work txn(c);
-        // Порядок важен из-за внешних ключей
         txn.exec0("TRUNCATE TABLE word_documents, words, documents RESTART IDENTITY CASCADE;");
         txn.commit();
         std::cout << "[DB] Tables were cleared.\n";
@@ -85,7 +84,6 @@ int DBManager::insert_document(const std::string& filename) {
     try {
         pqxx::connection c(conn_string);
         pqxx::work txn(c);
-        // INSERT ... ON CONFLICT DO NOTHING, затем SELECT id
         txn.exec0("INSERT INTO documents (filename) VALUES (" + txn.quote(filename) + ") ON CONFLICT (filename) DO NOTHING;");
         auto res = txn.exec("SELECT id FROM documents WHERE filename = " + txn.quote(filename) + ";");
         txn.commit();
@@ -137,7 +135,6 @@ std::vector<std::pair<std::string, int>> DBManager::search(const std::vector<std
         pqxx::connection c(conn_string);
         pqxx::work txn(c);
 
-        // Формируем список слов для IN ('word1','word2',...)
         std::stringstream in_list;
         for (size_t i = 0; i < words.size(); ++i) {
             if (i > 0) in_list << ",";

@@ -13,7 +13,6 @@ int main() {
     }
     cfg.print();
 
-    // Инициализация БД (создаст таблицы, если их нет — не повредит)
     DBManager db(cfg.db_host, cfg.db_port, cfg.db_name, cfg.db_user, cfg.db_password);
     if (!db.initialize()) {
         std::cerr << "[ERROR] Database initialization failed. Exiting.\n";
@@ -31,7 +30,6 @@ int main() {
             break;
         }
 
-        // Удаление лишних пробелов по краям
         input.erase(0, input.find_first_not_of(" \t\r\n"));
         input.erase(input.find_last_not_of(" \t\r\n") + 1);
 
@@ -40,24 +38,20 @@ int main() {
             break;
         }
 
-        // Очистка и разбиение на слова
         auto words = split_and_clean(input);
         if (words.empty()) {
             std::cout << "No valid words in query.\n\n";
             continue;
         }
 
-        // Ограничение до 4 слов (как рекомендовано в ТЗ)
         if (words.size() > 4) {
             std::cout << "Maximum 4 words allowed per query.\n\n";
             continue;
         }
 
-        // Убираем повторы, чтобы не путать подсчёт
         std::unordered_set<std::string> unique(words.begin(), words.end());
         std::vector<std::string> query(unique.begin(), unique.end());
 
-        // Поиск
         try {
             auto results = db.search(query);
 

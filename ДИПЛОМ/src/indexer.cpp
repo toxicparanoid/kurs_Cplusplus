@@ -27,14 +27,14 @@ int main() {
     cfg.load("config.ini");
     cfg.print();
 
-    // Инициализация БД
+    //инициализация БД
     DBManager db(cfg.db_host, cfg.db_port, cfg.db_name, cfg.db_user, cfg.db_password);
     if (!db.initialize()) {
         std::cerr << "[ERROR] Database initialization failed. Exiting.\n";
         return 1;
     }
 
-    // Очистка таблиц перед индексацией (для отладки, потом можно убрать или сделать опциональным)
+    //очистка таблиц перед индексацией
     if (!db.clear_tables()) {
         std::cerr << "[ERROR] Could not clear tables. Exiting.\n";
         return 1;
@@ -86,7 +86,7 @@ int main() {
 
             // запись в БД: открываем своё соединение
             try {
-                // Создаём менеджер с теми же параметрами, но открываем своё соединение
+                //создаём менеджер с теми же параметрами, но открываем своё соединение
                 DBManager local_db(db);   // используем копирование conn_string
 
                 int doc_id = local_db.insert_document(filename);
