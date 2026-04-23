@@ -30,7 +30,7 @@ ThreadPool::ThreadPool(size_t num_threads) {
 
                     task = std::move(tasks.front());
                     tasks.pop();
-                    ++active_tasks;   // увеличиваем счётчик активных задач
+                    ++active_tasks;
                 }
 
                 if (task) {
@@ -39,8 +39,8 @@ ThreadPool::ThreadPool(size_t num_threads) {
 
                 {
                     std::unique_lock<std::mutex> lock(queue_mutex);
-                    --active_tasks;   // уменьшаем после выполнения
-                    condition.notify_all(); // оповестим wait()
+                    --active_tasks;
+                    condition.notify_all();
                 }
             }
         });
