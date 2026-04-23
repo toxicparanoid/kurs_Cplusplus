@@ -18,7 +18,7 @@ mkdir build
 cd build
 
 echo Configuring CMake...
-cmake .. -DCMAKE_BUILD_TYPE=Release
+cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=C:/vcpkg/scripts/buildsystems/vcpkg.cmake
 
 echo Building project...
 cmake --build . --config Release -j4

@@ -30,10 +30,17 @@ ThreadPool::ThreadPool(size_t num_threads) {
 
                     task = std::move(tasks.front());
                     tasks.pop();
+                    ++active_tasks;   // увеличиваем счётчик активных задач
                 }
 
                 if (task) {
                     task();
+                }
+
+                {
+                    std::unique_lock<std::mutex> lock(queue_mutex);
+                    --active_tasks;   // уменьшаем после выполнения
+                    condition.notify_all(); // оповестим wait()
                 }
             }
         });
@@ -65,7 +72,7 @@ void ThreadPool::enqueue(std::function<void()> task) {
 
 void ThreadPool::wait() {
     std::unique_lock<std::mutex> lock(queue_mutex);
-    condition.wait(lock, [this] { 
-        return tasks.empty(); 
+    condition.wait(lock, [this] {
+        return tasks.empty() && active_tasks == 0;
     });
 }

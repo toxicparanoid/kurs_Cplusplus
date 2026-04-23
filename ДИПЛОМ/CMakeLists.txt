@@ -17,6 +17,7 @@ option(BUILD_INDEXER "Build indexer" ON)
 option(BUILD_SEARCHER "Build searcher" ON)
 
 find_package(Threads REQUIRED)
+find_package(libpqxx CONFIG REQUIRED)
 
 set(COMMON_SOURCES
     src/config.cpp
@@ -30,7 +31,7 @@ if(BUILD_INDEXER)
         src/indexer.cpp
         ${COMMON_SOURCES}
     )
-    target_link_libraries(indexer PRIVATE Threads::Threads)
+    target_link_libraries(indexer PRIVATE Threads::Threads libpqxx::pqxx)
     target_include_directories(indexer PRIVATE src)
 endif()
 
@@ -39,7 +40,7 @@ if(BUILD_SEARCHER)
         src/searcher.cpp
         ${COMMON_SOURCES}
     )
-    target_link_libraries(searcher PRIVATE Threads::Threads)
+    target_link_libraries(searcher PRIVATE Threads::Threads libpqxx::pqxx)
     target_include_directories(searcher PRIVATE src)
 endif()
 

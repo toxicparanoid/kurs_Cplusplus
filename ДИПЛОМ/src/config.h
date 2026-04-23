@@ -8,6 +8,7 @@
 #include <algorithm>
 #include <mutex>
 #include <sstream>
+#include <unordered_set>
 
 struct Config {
     // Database
